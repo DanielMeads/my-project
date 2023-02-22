@@ -32,4 +32,5 @@ jobs:
           key: ${{ secrets.KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           port: ${{ secrets.PORT }}
-          script: updatepush.sh
+          script: | 
+            updatepush.sh
