@@ -27,10 +27,11 @@ jobs:
       - name: executing remote ssh commands using ssh key
         uses: appleboy/ssh-action@v0.1.7
         with:
-          host: 174.138.4.254
-          username: host
-          key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDXLfDGnnb8APC2C4xwpFw/45Oif5zqXu2IOOCFuvgAytz2qADQtBVtoHwcQmGd+ZdO/Ed3SxlCOgOwaNfDPhS68rFJDguXnq9pqjFqyt+1DsJZ83feWcRmm8zhCkDJOsDSWEbyw4/FSLOQiEaOfNo1I1boKT3it4vR6AcLhn5cdph3Tx3kWLreal0hfi26520hGkkgBHHkfo0JMwjBcUEXj0juUpXOlU1LebV1PesD7hAjkrq6BT+S/98pq9jJ+eDBIJrpU0nJQwZsGXySQcGHn28vxoZS4gyYdz9HWlPdYN0EZ1e3lUFdp/xPyjY/QYzvjBM1kxA5UQwHL55wjAlQUf+CumRPZDmf1GGlXppiJFjG5S49InPHS6JURHQm+wG7ocgiaNc6VqiKRx3MOovtJOepX0yLFSnYFz/Wk6Fd/F9gkAPd5Ml4jUmM4tObsCPW9RAY9mR8sdn0aeK9UdzNYk1LcYHvMTSsb0aL2bRtdWTf+G71FcWSg21dI2NXoeE= root@drop1
-          port: 22
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
           script: |
             whoami
+            ls 
             
