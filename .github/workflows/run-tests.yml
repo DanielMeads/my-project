@@ -17,7 +17,7 @@ jobs:
         run: pip install -r requirements.txt
       - name: Run tests
         run: pytest
-    to-server:
+  to-server:
       needs: run_tests
       build:
         name: Build
