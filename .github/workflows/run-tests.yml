@@ -18,12 +18,12 @@ jobs:
       - name: Run tests
         run: pytest
 
-on: run_tests
-- name: executing remote ssh commands using ssh key
-  uses: appleboy/ssh-action@v0.1.7
-  with:
-    host: ${{ secrets.HOST }}
-    key: ${{ secrets.KEY }}
-    script: |
-      whoami
-      ls -al
+on: pytest
+  - name: executing remote ssh commands using ssh key
+    uses: appleboy/ssh-action@v0.1.7
+    with:
+      host: ${{ secrets.HOST }}
+      key: ${{ secrets.KEY }}
+      script: |
+        whoami
+        ls -al
