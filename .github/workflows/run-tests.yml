@@ -1,32 +1,33 @@
 name: Run tests
 
 # Run this workflow whenever something new is pushed.
-on: push
-jobs:
-  run-tests:
-    runs-on: ubuntu-20.04
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-      - name: Setup Python
-        uses: actions/setup-python@v2
-        # Specify some input for this particular action
-        with:
-          python-version: '3.8.6'
-      - name: Install Dependencies
-        run: pip install -r requirements.txt
-      - name: Run tests
-        run: pytest
-  on: run-tests
-    build:
-      name: Build
-      runs-on: ubuntu-latest
-      steps:
-      - name: executing remote ssh commands using ssh key
-        uses: appleboy/ssh-action@v0.1.7
-        with:
-          host: ${{ secrets.HOST }}
-          key: ${{ secrets.KEY }}
-          script: |
-            whoami
-            ls -al
+on: 
+  push:
+    jobs:
+      run-tests:
+        runs-on: ubuntu-20.04
+        steps:
+          - name: Checkout repository
+            uses: actions/checkout@v2
+          - name: Setup Python
+            uses: actions/setup-python@v2
+            # Specify some input for this particular action
+            with:
+              python-version: '3.8.6'
+          - name: Install Dependencies
+            run: pip install -r requirements.txt
+          - name: Run tests
+            run: pytest
+    pytest:
+      build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+        - name: executing remote ssh commands using ssh key
+          uses: appleboy/ssh-action@v0.1.7
+          with:
+            host: ${{ secrets.HOST }}
+            key: ${{ secrets.KEY }}
+            script: |
+              whoami
+              ls -al
