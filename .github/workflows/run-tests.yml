@@ -1,8 +1,7 @@
 name: Run tests
 
 # Run this workflow whenever something new is pushed.
-on: 
-  push:
+on: push
     jobs:
       run-tests:
         runs-on: ubuntu-20.04
@@ -18,16 +17,17 @@ on:
             run: pip install -r requirements.txt
           - name: Run tests
             run: pytest
-    pytest:
-      build:
-        name: Build
-        runs-on: ubuntu-latest
-        steps:
-        - name: executing remote ssh commands using ssh key
-          uses: appleboy/ssh-action@v0.1.7
-          with:
-            host: ${{ secrets.HOST }}
-            key: ${{ secrets.KEY }}
-            script: |
-              whoami
-              ls -al
+      to-server:
+        needs: run_tests
+        build:
+          name: Build
+          runs-on: ubuntu-latest
+          steps:
+          - name: executing remote ssh commands using ssh key
+            uses: appleboy/ssh-action@v0.1.7
+            with:
+              host: ${{ secrets.HOST }}
+              key: ${{ secrets.KEY }}
+              script: |
+                whoami
+                ls -al
