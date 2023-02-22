@@ -33,4 +33,5 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           port: ${{ secrets.PORT }}
           script: | 
+            cd my-project
             updatepush.sh
