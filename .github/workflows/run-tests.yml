@@ -34,4 +34,4 @@ jobs:
           port: ${{ secrets.PORT }}
           script: | 
             cd my-project
-            updatepush.sh
+            sudo bash updatepush.sh
