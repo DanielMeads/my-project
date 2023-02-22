@@ -35,3 +35,4 @@ jobs:
           script: | 
             cd my-project
             sudo bash updatepush.sh
+            echo 'CLEAR!'
