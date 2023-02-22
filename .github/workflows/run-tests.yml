@@ -32,8 +32,7 @@ jobs:
           key: ${{ secrets.KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
           port: ${{ secrets.PORT }}
-          script: |
-            whoami
+          script: echo "clear!"
           
           
             
