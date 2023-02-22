@@ -23,7 +23,7 @@ on: run_tests
   uses: appleboy/ssh-action@v0.1.7
   with:
     host: ${{ secrets.HOST }}
-    key: ${{ secrets.KEY
+    key: ${{ secrets.KEY }}
     script: |
       whoami
       ls -al
