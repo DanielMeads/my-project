@@ -36,7 +36,7 @@ def newuser():
         user = (request.form['username'])
         return redirect(url_for('newuser'), error=True)
     else:
-        return redirect(url_for("newuser.html"))
+        return render_template("newuser.html", error=error)
 
 
 @app.route("/cdci")
