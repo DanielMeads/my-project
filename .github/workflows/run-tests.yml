@@ -33,6 +33,6 @@ jobs:
           passphrase: ${{ secrets.PASSPHRASE }}
           port: ${{ secrets.PORT }}
           script: | 
-            cd my-project
+            cd /home/my-project
             sudo bash updatepush.sh
             echo 'CLEAR!'

@@ -30,7 +30,7 @@ def about():
     return render_template("about.html", title="About")
 
 
-@app.route("/lon")
+@app.route("/cdci")
 def lon():
     return render_template("cdci.html", title="CDCI")
 

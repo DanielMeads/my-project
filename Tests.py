@@ -16,7 +16,7 @@ def client():
         yield client
 
     os.close(db_fd)
-    os.unlink(our_app.app.config['DATABASE'])
+    os.unlink(app.app.config['DATABASE'])
 
 def test_get_home_returns_200(client):
     response = client.get("/")
