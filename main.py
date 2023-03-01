@@ -29,9 +29,19 @@ def index(message=''):
 def about():
     return render_template("about.html", title="About")
 
+@app.route("/newuser", methods=["GET", "POST"])
+def newuser():
+    #return render_template("newuser.html", title="NewUser")
+    error=False
+    if request.method == 'POST':
+        user = (request.form['username'])
+        return redirect(url_for('dashboard'))
+    else:
+        return redirect(url_for('newuser', error=True))
+
 
 @app.route("/cdci")
-def lon():
+def cdci():
     return render_template("cdci.html", title="CDCI")
 
 

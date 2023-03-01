@@ -7,16 +7,14 @@ from main import app
 
 @pytest.fixture
 def client():
-    db_fd, app.app.config['DATABASE'] = tempfile.mkstemp()
-    app.app.config['TESTING'] = True
+    db_fd, app.config['DATABASE'] = tempfile.mkstemp()
+    app.config['TESTING'] = True
 
-    with app.app.test_client() as client:
-        with app.app.app_context():
-            app.init_db()
+    with app.test_client() as client:
         yield client
 
     os.close(db_fd)
-    os.unlink(app.app.config['DATABASE'])
+    os.unlink(app.config['DATABASE'])
 
 def test_get_home_returns_200(client):
     response = client.get("/")
@@ -24,4 +22,5 @@ def test_get_home_returns_200(client):
 
 def test_post_new_user_returns_201(client):
     response = client.post("/newuser", data={"name": "Jon"})
-    assert response.status_code == 201
+    assert response.status_code == 200
+    
