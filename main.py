@@ -19,7 +19,7 @@ def redirect_index():
 @app.route("/")
 def index(message=''):    
     if 'username' in session:
-        message = f'Logged in as {session["username"]}'
+        message = f"Logged in as {session['username']}"
     else:
         message = 'You are not logged in'
     return render_template("index.html", title="Index", message=message)
