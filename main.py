@@ -31,12 +31,11 @@ def about():
 
 @app.route("/newuser", methods=["GET", "POST"])
 def newuser():
-    error=False
+    error = request.args.get('error') == 'True'
     if request.method == 'POST':
         user = (request.form['username'])
-        return redirect(url_for('newuser', error=True))
-    else:
-        return render_template("newuser.html", error=error)
+        error = True
+    return render_template("newuser.html", error=error)
 
 
 @app.route("/cdci")
@@ -46,7 +45,7 @@ def cdci():
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    error=False
+    error = request.args.get('error') == 'True'
     if request.method == 'POST':
         user = (request.form['username'], hash_password(request.form['password']))
         users = get_users()
@@ -56,10 +55,8 @@ def login():
                 session['username'] = request.form['username']
                 print (session.values())
                 return redirect(url_for('dashboard'))
-        else:
-            return redirect(url_for('login', error=True))
-    else:
-        return render_template('login.html', error=error)
+        error = True
+    return render_template('login.html', error=error)
 
 
 @app.route("/dashboard")
