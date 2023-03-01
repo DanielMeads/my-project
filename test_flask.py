@@ -20,6 +20,6 @@ def test_get_home_returns_200(client):
     response = client.get("/")
     assert response.status_code == 200
 
-def test_post_new_user_returns_302(client):
+def test_post_new_user_returns_200(client):
     response = client.post("/newuser", data={"username": "Jon"})
-    assert response.status_code == 302
+    assert response.status_code == 200
