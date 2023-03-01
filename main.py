@@ -31,13 +31,12 @@ def about():
 
 @app.route("/newuser", methods=["GET", "POST"])
 def newuser():
-    #return render_template("newuser.html", title="NewUser")
     error=False
     if request.method == 'POST':
         user = (request.form['username'])
-        return redirect(url_for('dashboard'))
+        return redirect(url_for('newuser'), error=True)
     else:
-        return redirect(url_for('newuser', error=True))
+        return redirect(url_for("newuser.html"))
 
 
 @app.route("/cdci")
