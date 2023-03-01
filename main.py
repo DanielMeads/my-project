@@ -34,7 +34,7 @@ def newuser():
     error=False
     if request.method == 'POST':
         user = (request.form['username'])
-        return redirect(url_for('newuser'), error=True)
+        return redirect(url_for('newuser', error=True))
     else:
         return render_template("newuser.html", error=error)
 
